@@ -1,0 +1,106 @@
+{
+  "types": {
+    "pythonRemote": {
+      "type": "object",
+      "displayName": "Proxmox Connection",
+      "properties": {
+        "host": {
+          "type": "text",
+          "displayName": "Proxmox Host",
+          "description": "Hostname or IP of the Proxmox VE node (e.g. 192.168.1.100)",
+          "nullable": true
+        },
+        "port": {
+          "type": "integer",
+          "displayName": "Port",
+          "description": "Proxmox API port (default: 8006)",
+          "default": 8006,
+          "nullable": false
+        },
+        "verify_ssl": {
+          "type": "boolean",
+          "displayName": "Verify SSL Certificate",
+          "description": "Disable for self-signed certs (recommended for home labs)",
+          "default": false,
+          "nullable": false
+        },
+        "username": {
+          "type": "text",
+          "displayName": "Username",
+          "description": "Proxmox API username (e.g. monitoring@pve)",
+          "nullable": true
+        },
+        "token_name": {
+          "type": "text",
+          "displayName": "API Token Name",
+          "description": "Token ID (e.g. dynatrace)",
+          "nullable": true
+        },
+        "token_value": {
+          "type": "secret",
+          "displayName": "API Token Value",
+          "description": "The token secret value",
+          "nullable": true
+        },
+        "collection_interval_minutes": {
+          "type": "integer",
+          "displayName": "Collection Interval (minutes)",
+          "description": "How often to poll the Proxmox API",
+          "default": 1,
+          "nullable": false
+        }
+      }
+    }
+  },
+  "schema": {
+    "version": "0.0.1",
+    "schemaId": "python:custom.proxmox",
+    "displayName": "Proxmox VE",
+    "description": "Monitor Proxmox VE clusters — nodes, VMs, LXC containers, and storage.",
+    "ownerProductManagement": "Goulet",
+    "ownerDevelopment": "Goulet",
+    "ownerMarketing": "Goulet",
+    "ownerLegalExport": "Goulet",
+    "ownerDomainExpert": "Goulet",
+    "ownerDocumentation": "Goulet",
+    "allowGlobalScope": false,
+    "groups": [
+      {
+        "id": "monitoring",
+        "displayName": "Proxmox Monitoring",
+        "icon": "server",
+        "type": "#/types/pythonRemote",
+        "properties": [
+          {
+            "key": "host",
+            "displayName": "Proxmox Host"
+          },
+          {
+            "key": "port",
+            "displayName": "Port"
+          },
+          {
+            "key": "verify_ssl",
+            "displayName": "Verify SSL Certificate"
+          },
+          {
+            "key": "username",
+            "displayName": "Username"
+          },
+          {
+            "key": "token_name",
+            "displayName": "API Token Name"
+          },
+          {
+            "key": "token_value",
+            "displayName": "API Token Value"
+          },
+          {
+            "key": "collection_interval_minutes",
+            "displayName": "Collection Interval (minutes)"
+          }
+        ]
+      }
+    ]
+  }
+}

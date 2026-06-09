@@ -1,0 +1,870 @@
+{
+  "dashboardMetadata": {
+    "name": "Proxmox Guest Detail",
+    "shared": false,
+    "owner": "",
+    "tags": ["proxmox"],
+    "preset": true,
+    "popularity": 1
+  },
+  "tiles": [
+    {
+      "name": "VM Detail",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {"top": 0, "left": 0, "width": 1904, "height": 38}
+    },
+    {
+      "name": "VM Status",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 38, "left": 0, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.vm.status",
+          "spaceAggregation": "MIN",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "VM CPU Usage",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 38, "left": 952, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.vm.cpu.usage",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "VM Memory Used / Total",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 342, "left": 0, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.vm.memory.used",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "custom.proxmox.vm.memory.total",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A", "B"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "VM Balloon Current / Target",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 342, "left": 952, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.vm.balloon.current",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "custom.proxmox.vm.balloon.target",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A", "B"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "VM Host Memory",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 646, "left": 0, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.vm.memory.host",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "VM Disk I/O",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 646, "left": 952, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.vm.disk.read",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "custom.proxmox.vm.disk.write",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A", "B"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "VM Disk Used",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 950, "left": 0, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.vm.disk.used",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "VM Network In / Out",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 950, "left": 952, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.vm.network.in",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "custom.proxmox.vm.network.out",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A", "B"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "VM PSI Pressure",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 1254, "left": 0, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.vm.pressure.cpu.some",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "custom.proxmox.vm.pressure.cpu.full",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "C",
+          "metric": "custom.proxmox.vm.pressure.io.some",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "D",
+          "metric": "custom.proxmox.vm.pressure.memory.some",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "E",
+          "metric": "custom.proxmox.vm.pressure.memory.full",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A", "B", "C", "D", "E"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "VM Guest Agent",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {"top": 1558, "left": 0, "width": 1904, "height": 38}
+    },
+    {
+      "name": "In-Guest Disk Used / Total",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 1596, "left": 0, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.vm.agent.disk.used",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "mountpoint"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "custom.proxmox.vm.agent.disk.total",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "mountpoint"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A", "B"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "In-Guest NIC RX / TX",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 1596, "left": 952, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.vm.agent.net.rx_bytes",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "iface"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "custom.proxmox.vm.agent.net.tx_bytes",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "iface"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A", "B"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "In-Guest NIC Errors / Dropped",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 1900, "left": 0, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.vm.agent.net.rx_errors",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "iface"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "custom.proxmox.vm.agent.net.tx_errors",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "iface"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "C",
+          "metric": "custom.proxmox.vm.agent.net.rx_dropped",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "iface"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "D",
+          "metric": "custom.proxmox.vm.agent.net.tx_dropped",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["vm_name", "iface"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A", "B", "C", "D"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "LXC Detail",
+      "tileType": "HEADER",
+      "configured": true,
+      "bounds": {"top": 2204, "left": 0, "width": 1904, "height": 38}
+    },
+    {
+      "name": "LXC Status",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 2242, "left": 0, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.lxc.status",
+          "spaceAggregation": "MIN",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "LXC CPU Usage",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 2242, "left": 952, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.lxc.cpu.usage",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "LXC Memory Used / Total",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 2546, "left": 0, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.lxc.memory.used",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "custom.proxmox.lxc.memory.total",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A", "B"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "LXC Host Memory",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 2546, "left": 952, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.lxc.memory.host",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "LXC Swap Used / Total",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 2850, "left": 0, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.lxc.swap.used",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "custom.proxmox.lxc.swap.total",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A", "B"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "LXC Disk I/O",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 2850, "left": 952, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.lxc.disk.read",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "custom.proxmox.lxc.disk.write",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A", "B"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "LXC Disk Used",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 3154, "left": 0, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.lxc.disk.used",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "LXC Network In / Out",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 3154, "left": 952, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.lxc.network.in",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "custom.proxmox.lxc.network.out",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A", "B"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    },
+    {
+      "name": "LXC PSI Pressure",
+      "tileType": "DATA_EXPLORER",
+      "configured": true,
+      "bounds": {"top": 3458, "left": 0, "width": 952, "height": 304},
+      "queries": [
+        {
+          "id": "A",
+          "metric": "custom.proxmox.lxc.pressure.cpu.some",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "B",
+          "metric": "custom.proxmox.lxc.pressure.cpu.full",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "C",
+          "metric": "custom.proxmox.lxc.pressure.io.some",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "D",
+          "metric": "custom.proxmox.lxc.pressure.memory.some",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        },
+        {
+          "id": "E",
+          "metric": "custom.proxmox.lxc.pressure.memory.full",
+          "spaceAggregation": "AVG",
+          "timeAggregation": "DEFAULT",
+          "splitBy": ["lxc_name", "node_name", "cluster_name"],
+          "filterBy": null,
+          "enabled": true
+        }
+      ],
+      "visualConfig": {
+        "type": "GRAPH_CHART",
+        "global": {"hideLegend": false},
+        "rules": [],
+        "axes": {
+          "xAxis": {"displayName": "", "visible": true},
+          "yAxes": [{"displayName": "", "visible": true, "min": "AUTO", "max": "AUTO", "position": "LEFT", "queryIds": ["A", "B", "C", "D", "E"], "defaultAxis": true}]
+        },
+        "heatmapSettings": {"yAxis": "VALUE"},
+        "thresholds": [],
+        "tableSettings": {"isThresholdBackgroundApplied": false, "hiddenColumns": []},
+        "graphChartSettings": {"connectNulls": false},
+        "honeycombSettings": {"showHive": true, "showLegend": true, "showLabels": false}
+      }
+    }
+  ]
+}
